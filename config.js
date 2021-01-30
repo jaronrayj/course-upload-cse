@@ -1,13 +1,16 @@
 require('dotenv').config();
 const axios = require('axios');
+const axiosThrottle = require('axios-throttle');
+//pass axios object and value of the delay between requests in ms
+axiosThrottle.init(axios, 200)
 
 const token = process.env.TOKEN;
 const domain = process.env.DOMAIN
 
-const instance =
+module.exports =
     axios.create({
         baseURL: `https://${domain}.kuali.co/`,
-        headers: { 'Authentication': `Bearer ${token}` }
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
     });
-
-module.exports = instance();

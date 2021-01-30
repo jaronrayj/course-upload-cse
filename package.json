@@ -19,6 +19,7 @@
     "homepage": "https://github.com/jaronrayj/course-upload-cse#readme",
     "dependencies": {
         "axios": "^0.21.1",
+        "axios-throttle": "^1.0.2",
         "csvtojson": "^2.0.10",
         "dotenv": "^8.2.0",
         "fs": "^0.0.1-security",

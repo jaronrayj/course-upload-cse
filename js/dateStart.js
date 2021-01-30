@@ -10,26 +10,30 @@ module.exports = (dateStart, dates) => {
             year = splitDate[1]
             season = splitDate[0];
         }
+        // toLowerCase breaks if empty value
+        if (season) {
+            switch (season.trim().toLowerCase()) {
+                case "spring":
+                    resolve(`${year}-${dates.spring}`)
+                    break;
 
-        switch (season) {
-            case "Spring":
-                resolve(`${year}-${dates.spring}`)
-                break;
+                case "summer":
+                    resolve(`${year}-${dates.summer}`)
+                    break;
 
-            case "Summer":
-                resolve(`${year}-${dates.summer}`)
-                break;
+                case "fall":
+                    resolve(`${year}-${dates.fall}`)
+                    break;
 
-            case "Fall":
-                resolve(`${year}-${dates.fall}`)
-                break;
+                case "winter":
+                    resolve(`${year}-${dates.winter}`)
+                    break;
 
-            case "Winter":
-                resolve(`${year}-${dates.winter}`)
-                break;
-
-            default:
-                break;
+                default:
+                    break;
+            }
+        } else {
+            resolve("");
         }
     })
 }
