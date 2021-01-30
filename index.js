@@ -7,6 +7,12 @@ const axios = require('axios');
 // Unique variables here
 const domain = 'stucse';
 const csvLocation = readdirSync('./data');
+const startDates = {
+    spring: '04-03',
+    summer: '07-04',
+    fall: '10-04',
+    winter: '01-01',
+}
 
 
 const DEBUG = true;
@@ -26,7 +32,7 @@ const main = async() => {
             title: course.title,
             credits: await creditSetup(course.creditType, course.creditsMin, course.creditsMax),
             status: "draft",
-            dateStart: await dateStart(course.dateStart),
+            dateStart: await dateStart(course.dateStart, startDates),
             groupFilter1: {
                 { kualiURL }
             }
