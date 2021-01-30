@@ -2,8 +2,83 @@
 2. pull data from csv
 3. loop through csv data
 4. set up data into required json format
-    4a. get option types and 
+    4a. get option types and match subjectCode to  if it's available, otherwise leave blank
+    4b. 
 5. post each course to 'https://stucse.kuali.co/api/cm/courses/'
 6. 
 
-Create json object in 
+Create json object to look like this:
+{
+  "subjectCode": "6012dd6a016ce30026cbd08d",
+  "number": "101",
+  "title": "Accounting 101",
+  "credits": {
+    "chosen": "fixed",
+    "credits": {
+      "min": "3",
+      "max": "3"
+    },
+    "value": "3"
+  },
+  "status": "draft",
+  "dateStart": "2021-04-03",
+  "groupFilter1": "6012e9eaffe5da00a2a51cbb",
+  "groupFilter2": "6012e96effe5da00a2a51cb9",
+  "campus": {
+    "6012de03baa3f800262b5dbf": true,
+    "6012ddfbe43ec1002784e1c5": true
+  },
+  "notes": "Submitted by <my name>"
+}
+
+BREAKDOWN:
+{
+  "subjectCode": {compare csv.subjectCode to optionTypes.name and return id : ""},
+  "number": {csv.number},
+  "title": {csv.title},
+  "credits": {
+   see below
+  },
+  "status": "draft",
+  "dateStart": datestart(csv.dateStart),
+  "groupFilter1": "{{kualiURL}}/api/v1/groups/?q=csv.department"[0].id || "",
+  "groupFilter2": "{{kualiURL}}/api/v1/groups/?q=csv.department"[0].parentId || "",
+  "campus": {
+    "6012de03baa3f800262b5dbf": true,
+    "6012ddfbe43ec1002784e1c5": true
+  },
+  "notes": "Submitted by {Jaron Johnson}"
+  ^could potentially do first and last name from this: https://developers.kuali.co/#users-current-user-get
+}
+
+credits switch (csv.creditType)
+
+case fixed
+    credits.credits.min && credits.credits.max && credits.value = csv.creditsMin
+
+case multiple
+    credits.credits.min = csv.creditsMin
+    credits.credits.max = csv.creditsMax
+    credits.value = [csv.creditsMin, csv.creditsMax]
+
+case range
+    credits.credits.min = csv.creditsMin
+    credits.credits.max = csv.creditsMax
+    credits.value.min = csv.creditsMin 
+    credits.value.max = csv.creditsMax
+
+dateStart (csv.dateStart){
+    const splitDate = csv.datestart.split(" ")
+    switch (splitdate[0])
+    case Spring
+  return `${splitDate[1]}-04-03`
+
+    case summer
+  return `${splitDate[1]}-07-04`
+
+    case Fall
+  return `${splitDate[1]}-10-04`
+
+    case Winter
+    return `${splitDate[1]}-01-01`
+}
