@@ -1,0 +1,9 @@
+1. choose csv file location
+2. pull data from csv
+3. loop through csv data
+4. set up data into required json format
+    4a. get option types and 
+5. post each course to 'https://stucse.kuali.co/api/cm/courses/'
+6. 
+
+Create json object in 

@@ -16,5 +16,11 @@
     "bugs": {
         "url": "https://github.com/jaronrayj/course-upload-cse/issues"
     },
-    "homepage": "https://github.com/jaronrayj/course-upload-cse#readme"
+    "homepage": "https://github.com/jaronrayj/course-upload-cse#readme",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "csvtojson": "^2.0.10",
+        "dotenv": "^8.2.0",
+        "fs": "^0.0.1-security"
+    }
 }
