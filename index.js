@@ -1,6 +1,6 @@
 const { readdirSync } = require("fs");
 const inquirer = require('inquirer');
-const { csv2json } = require("./utils/csv2json");
+const csv2json = require("./utils/csv2json");
 
 ////////////////////////////////////////////
 // Unique variables here
@@ -12,20 +12,26 @@ const DEBUG = true;
 ////////////////////////////////////////////
 
 const csvLocation = readdirSync('./data');
-const main = () => {
-    inquirer.prompt({
-            type: "list",
-            name: "csv",
-            choices: csvLocation,
-            message: "Which file do you want to run?"
+const main = async() => {
+    // check to grab correct file
+    const inqPrompt = () => {
+        return new Promise((resolve, reject) => {
+            inquirer.prompt({
+                    type: "list",
+                    name: "csv",
+                    choices: csvLocation,
+                    message: "Which file do you want to run?"
+                })
+                .then(async inqRes => {
+                    resolve(csv2json(`./data/${inqRes.csv}`));
+                })
         })
-        .then(async res => {
-            console.log(`./data/${res.csv}`);
-            const csvJson = await csv2json(`./data/${res.csv}`);
-            if (DEBUG) {
-                console.log("🚀 ~ file: index.js ~ line 24 ~ main ~ csvJson", csvJson);
-            }
-        })
+    }
+    const jsonData = await inqPrompt();
+
+    if (DEBUG) {
+        console.log("🚀 ~ file: index.js ~ line 30 ~ main ~ jsonData", jsonData)
+    }
 }
 
 main();
