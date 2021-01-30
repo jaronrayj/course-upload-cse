@@ -2,15 +2,12 @@ require('dotenv').config();
 const axios = require('axios');
 
 const token = process.env.TOKEN;
+const domain = process.env.DOMAIN
 
-const instance = (domain) => {
+const instance =
     axios.create({
         baseURL: `https://${domain}.kuali.co/`,
-        timeout: 1000,
-        headers: { 'Authentication': token }
+        headers: { 'Authentication': `Bearer ${token}` }
     });
-}
 
-module.exports = {
-    instance: instance(domain)
-}
+module.exports = instance();

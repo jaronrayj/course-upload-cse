@@ -1,6 +1,14 @@
-const { instance } = require('../config');
+const instance = require('../config');
 
-module.exports = (domain, groupType) {
-    instance(domain)
-
+module.exports = (groupType, name) => {
+    return new Promise((resolve, reject) => {
+        instance.get(`/api/cm/options/types/${groupType}?name=${name}`)
+            .then(res => {
+                if (res) {
+                    resolve(res)
+                } else {
+                    resolve("");
+                }
+            })
+    })
 }
