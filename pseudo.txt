@@ -2,10 +2,7 @@
 2. pull data from csv
 3. loop through csv data
 4. set up data into required json format
-    4a. get option types and match subjectCode to  if it's available, otherwise leave blank
-    4b. 
 5. post each course to 'https://stucse.kuali.co/api/cm/courses/'
-6. 
 
 Create json object to look like this:
 {
@@ -33,7 +30,7 @@ Create json object to look like this:
 
 BREAKDOWN:
 {
-  "subjectCode": {compare csv.subjectCode to optionTypes.name and return id : ""},
+  "subjectCode": {/api/cm/options/types/subjectcodes?name=csv.subjectCode}.id,
   "number": {csv.number},
   "title": {csv.title},
   "credits": {
@@ -47,7 +44,7 @@ BREAKDOWN:
     "6012de03baa3f800262b5dbf": true,
     "6012ddfbe43ec1002784e1c5": true
   },
-  "notes": "Submitted by {Jaron Johnson}"
+  "notes": "Submitted by {full name}"
   ^could potentially do first and last name from this: https://developers.kuali.co/#users-current-user-get
 }
 
@@ -67,6 +64,7 @@ case range
     credits.value.min = csv.creditsMin 
     credits.value.max = csv.creditsMax
 
+ isInteger(parseint(check?))
 dateStart (csv.dateStart){
     const splitDate = csv.datestart.split(" ")
     switch (splitdate[0])
@@ -82,3 +80,12 @@ dateStart (csv.dateStart){
     case Winter
     return `${splitDate[1]}-01-01`
 }
+
+(campuses) =>{
+    splitcampuses = campuses.split(",")
+    splitcampuses.foreach(campus =>{
+        campus.{api/cm/options/types/campuses?name=campus}.id = true
+    })
+}
+
+// todo find way to store campuses ids to not re-run api calls
