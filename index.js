@@ -1,8 +1,10 @@
 const { readdirSync } = require("fs");
+const campusSetup = require("./js/campusSetup");
 const creditSetup = require("./js/creditSetup");
 const dateStart = require("./js/dateStart");
 const inqPrompt = require("./js/inqPrompt");
 const groupTypes = require("./models/groupTypes");
+const logJSON = require("./utils/logjson");
 
 ////////////////////////////////////////////
 // Unique variables here
@@ -22,7 +24,7 @@ const main = async() => {
     // check to grab correct file, returns and logs data as json
     const jsonData = await inqPrompt(csvLocation);
     if (DEBUG) {
-        console.log("🚀 ~ file: index.js ~ line 16 ~ main ~ jsonData", jsonData)
+        // console.log("🚀 ~ file: index.js ~ line 16 ~ main ~ jsonData", jsonData)
     }
     const postData = [];
     jsonData.forEach(async course => {
@@ -35,15 +37,18 @@ const main = async() => {
             dateStart: await dateStart(course.dateStart, startDates),
             // groupFilter1: {{kualiURL}}/api/v1/groups/?q=csv.department[0].id|| "",
             // groupFilter2: {{kualiURL}}/api/v1/groups/?q=csv.department[0].parentId|| "",
-            // campus: await campusSetup(course.campus),
+            campus: await campusSetup(course.campus),
             notes: `Submitted by ${cse}`
         }
         postData.push(courseObj);
+        if (postData.length === jsonData.length) {
+            if (DEBUG) {
+                console.log("🚀 ~ file: index.js ~ line 45 ~ main ~ postData", postData)
+            }
+            logJSON('/data/completed', postData);
+        }
     });
-    if (DEBUG) {
-        console.log("🚀 ~ file: index.js ~ line 45 ~ main ~ postData", postData)
-    }
-
 }
+
 
 main();
