@@ -4,6 +4,7 @@ const creditSetup = require("./js/creditSetup");
 const dateStart = require("./js/dateStart");
 const groupFilter = require("./js/groupFilter");
 const inqPrompt = require("./js/inqPrompt");
+const createCourses = require("./models/createCourses");
 const groupTypes = require("./models/getGroupTypes");
 const logJSON = require("./utils/logjson");
 
@@ -11,13 +12,13 @@ const logJSON = require("./utils/logjson");
 // Unique variables here
 const csvLocation = readdirSync('./data');
 const startDates = {
-    spring: '04-03',
-    summer: '07-04',
-    fall: '10-04',
-    winter: '01-01',
-}
-
-const cse = 'Jaron Johnson'
+        spring: '04-03',
+        summer: '07-04',
+        fall: '10-04',
+        winter: '01-01',
+    }
+    // const domain = 'stucse';
+const cse = 'Jaron Johnson';
 const DEBUG = true;
 ////////////////////////////////////////////
 
@@ -47,6 +48,7 @@ const main = async() => {
                 console.log("🚀 ~ file: index.js ~ line 45 ~ main ~ postData", postData)
             }
             logJSON('/data/completed', postData);
+            // createCourses(postData);
         }
     });
 }

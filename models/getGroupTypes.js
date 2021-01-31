@@ -5,6 +5,7 @@ module.exports = (groupType, name, dataReturn) => {
         instance.get(`/api/cm/options/types/${groupType}?name=${name}`)
             .then(res => {
                 if (res) {
+                    // assumes only one correct response
                     resolve(res.data[0][dataReturn])
                 } else {
                     resolve("");
