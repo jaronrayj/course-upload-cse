@@ -87,5 +87,3 @@ dateStart (csv.dateStart){
         campus.{api/cm/options/types/campuses?name=campus}.id = true
     })
 }
-
-// todo find way to store campuses ids to not re-run api calls

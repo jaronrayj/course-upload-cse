@@ -2,8 +2,9 @@ const { readdirSync } = require("fs");
 const campusSetup = require("./js/campusSetup");
 const creditSetup = require("./js/creditSetup");
 const dateStart = require("./js/dateStart");
+const groupFilter = require("./js/groupFilter");
 const inqPrompt = require("./js/inqPrompt");
-const groupTypes = require("./models/groupTypes");
+const groupTypes = require("./models/getGroupTypes");
 const logJSON = require("./utils/logjson");
 
 ////////////////////////////////////////////
@@ -35,8 +36,8 @@ const main = async() => {
             credits: await creditSetup(course.creditType, course.creditsMin, course.creditsMax),
             status: "draft",
             dateStart: await dateStart(course.dateStart, startDates),
-            // groupFilter1: {{kualiURL}}/api/v1/groups/?q=csv.department[0].id|| "",
-            // groupFilter2: {{kualiURL}}/api/v1/groups/?q=csv.department[0].parentId|| "",
+            groupFilter1: await groupFilter(course.department, 'id'),
+            groupFilter2: await groupFilter(course.department, 'parentId'),
             campus: await campusSetup(course.campus),
             notes: `Submitted by ${cse}`
         }

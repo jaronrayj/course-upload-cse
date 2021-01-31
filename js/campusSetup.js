@@ -1,4 +1,4 @@
-const groupTypes = require("../models/groupTypes")
+const groupTypes = require("../models/getGroupTypes")
 
 module.exports = (campuses) => {
     return new Promise((resolve, reject) => {
@@ -9,7 +9,6 @@ module.exports = (campuses) => {
         const campusSplit = campuses.split(',');
         campusSplit.forEach(async campus => {
             const campusId = await groupTypes('campuses', campus, 'id');
-            console.log("🚀 ~ file: campusSetup.js ~ line 11 ~ newPromise ~ campusId", campusId)
             campusReturn[campusId] = true;
             if (count === campusSplit.length) {
                 resolve(campusReturn);
