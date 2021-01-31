@@ -19,14 +19,14 @@ const startDates = {
     }
     // const domain = 'stucse';
 const cse = 'Jaron Johnson';
-const DEBUG = true;
+const DEBUG = false;
 ////////////////////////////////////////////
 
 const main = async() => {
     // check to grab correct file, returns and logs data as json
     const jsonData = await inqPrompt(csvLocation);
     if (DEBUG) {
-        // console.log("🚀 ~ file: index.js ~ line 16 ~ main ~ jsonData", jsonData)
+        console.log("🚀 ~ file: index.js ~ line 16 ~ main ~ jsonData", jsonData)
     }
     const postData = [];
     jsonData.forEach(async course => {

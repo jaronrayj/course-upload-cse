@@ -13,8 +13,8 @@
     },
     "status": "draft",
     "dateStart": "2019-10-04",
-    "groupFilter1": "6012e9548fee97008efb8b66",
-    "groupFilter2": null,
+    "groupFilter1": "",
+    "groupFilter2": "",
     "campus": {
       "6012de03baa3f800262b5dbf": true,
       "6012ddf35a84800027c335e3": true
@@ -87,9 +87,9 @@
     "groupFilter1": "6012ea43a0df1700a25460f7",
     "groupFilter2": "6012e9548fee97008efb8b66",
     "campus": {
+      "6012ddfbe43ec1002784e1c5": true,
       "6012ddff016ce30026cbd093": true,
-      "6012de03baa3f800262b5dbf": true,
-      "6012ddfbe43ec1002784e1c5": true
+      "6012de03baa3f800262b5dbf": true
     },
     "notes": "Submitted by Jaron Johnson"
   }
