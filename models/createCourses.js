@@ -8,5 +8,6 @@ module.exports = (postData) => {
             }).catch(err => {
                 throw err
             })
+        resolve()
     })
 }
