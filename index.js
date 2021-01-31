@@ -47,8 +47,8 @@ const main = async() => {
             if (DEBUG) {
                 console.log("🚀 ~ file: index.js ~ line 45 ~ main ~ postData", postData)
             }
+            await createCourses(postData);
             logJSON('/data/completed', postData);
-            // createCourses(postData);
         }
     });
 }

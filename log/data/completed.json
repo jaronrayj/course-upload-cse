@@ -1,5 +1,26 @@
 [
   {
+    "subjectCode": "6012dd6a016ce30026cbd08d",
+    "number": "101",
+    "title": "Accounting 101",
+    "credits": {
+      "chosen": "fixed",
+      "credits": {
+        "min": "3",
+        "max": "3"
+      },
+      "value": "3"
+    },
+    "status": "draft",
+    "dateStart": "2021-10-04",
+    "groupFilter1": "6012e9eaffe5da00a2a51cbb",
+    "groupFilter2": "6012e96effe5da00a2a51cb9",
+    "campus": {
+      "6012de03baa3f800262b5dbf": true
+    },
+    "notes": "Submitted by Jaron Johnson"
+  },
+  {
     "subjectCode": "6012dd83c0b5c30026745378",
     "number": "101",
     "title": "Math 101",
@@ -18,27 +39,6 @@
     "campus": {
       "6012de03baa3f800262b5dbf": true,
       "6012ddf35a84800027c335e3": true
-    },
-    "notes": "Submitted by Jaron Johnson"
-  },
-  {
-    "subjectCode": "6012dd6a016ce30026cbd08d",
-    "number": "101",
-    "title": "Accounting 101",
-    "credits": {
-      "chosen": "fixed",
-      "credits": {
-        "min": "3",
-        "max": "3"
-      },
-      "value": "3"
-    },
-    "status": "draft",
-    "dateStart": "2021-10-04",
-    "groupFilter1": "6012e9eaffe5da00a2a51cbb",
-    "groupFilter2": "6012e96effe5da00a2a51cb9",
-    "campus": {
-      "6012de03baa3f800262b5dbf": true
     },
     "notes": "Submitted by Jaron Johnson"
   },
@@ -62,8 +62,8 @@
     "groupFilter1": "6012ea308fee97008efb8b70",
     "groupFilter2": "6012e9548fee97008efb8b66",
     "campus": {
-      "6012ddf7c0b5c3002674537d": true,
-      "6012ddf35a84800027c335e3": true
+      "6012ddf35a84800027c335e3": true,
+      "6012ddf7c0b5c3002674537d": true
     },
     "notes": "Submitted by Jaron Johnson"
   },
@@ -87,9 +87,9 @@
     "groupFilter1": "6012ea43a0df1700a25460f7",
     "groupFilter2": "6012e9548fee97008efb8b66",
     "campus": {
-      "6012ddfbe43ec1002784e1c5": true,
+      "6012de03baa3f800262b5dbf": true,
       "6012ddff016ce30026cbd093": true,
-      "6012de03baa3f800262b5dbf": true
+      "6012ddfbe43ec1002784e1c5": true
     },
     "notes": "Submitted by Jaron Johnson"
   }
